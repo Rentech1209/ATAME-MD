@@ -18,7 +18,7 @@ const { startTelegramBot } = require('./lib/telegram');
 
 // Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+// Web UI temporarily disabled; Telegram is the active pairing interface.
 
 // Store active connections
 const activeConnections = new Map();
@@ -202,7 +202,7 @@ if (fs.existsSync(commandsPath)) {
 
 // Serve the main page
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
+    res.status(410).json({ status: "web_ui_disabled", bot: BOT_NAME, pairing: "Use Telegram /pair <number>" });
 });
 
 // API endpoint to request pairing code
@@ -1186,7 +1186,7 @@ let telegramBridge;
 server.listen(port, async () => {
     console.log(`🚀 ${BOT_NAME} server running on http://localhost:${port}`);
     console.log(`📱 WhatsApp bot initialized`);
-    telegramBridge = startTelegramBot({ botName: BOT_NAME, ownerName: OWNER_NAME, ownerNumber: OWNER_NUMBER, webUrl: WEB_URL, menuImagePath: MENU_IMAGE_PATH });
+    telegramBridge = startTelegramBot({ botName: BOT_NAME, ownerName: OWNER_NAME, ownerNumber: OWNER_NUMBER, webUrl: WEB_URL, pairApiUrl: `http://127.0.0.1:${port}/api/pair`, menuImagePath: MENU_IMAGE_PATH });
     console.log(`🔧 Loaded ${commands.size} commands`);
     console.log(`📊 Starting with ${totalUsers} total users (persistent)`);
     
