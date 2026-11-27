@@ -10,7 +10,8 @@ const P = require("pino");
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-const port = process.env.PORT || 3000;
+const port = Number(process.env.PORT) || 3000;
+const host = process.env.HOST || "0.0.0.0";
 
 const GroupEvents = require("./events/GroupEvents");
 const runtimeTracker = require('./commands/runtime');
@@ -202,6 +203,10 @@ if (fs.existsSync(commandsPath)) {
 }
 
 // Serve the main page
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "ok", bot: BOT_NAME });
+});
+
 app.get("/", (req, res) => {
     res.status(410).json({ status: "web_ui_disabled", bot: BOT_NAME, pairing: "Use Telegram /pair <number>" });
 });
@@ -1184,8 +1189,8 @@ async function reloadExistingSessions() {
 // Start the server
 let telegramBridge;
 
-server.listen(port, async () => {
-    console.log(`🚀 ${BOT_NAME} server running on http://localhost:${port}`);
+server.listen(port, host, async () => {
+    console.log(`🚀 ${BOT_NAME} server running on http://${host}:${port}`);
     console.log(`📱 WhatsApp bot initialized`);
     telegramBridge = startTelegramBot({ botName: BOT_NAME, ownerName: OWNER_NAME, ownerNumber: OWNER_NUMBER, telegramOwnerId: TELEGRAM_OWNER_ID, webUrl: WEB_URL, pairApiUrl: `http://127.0.0.1:${port}/api/pair`, menuImagePath: MENU_IMAGE_PATH });
     console.log(`🔧 Loaded ${commands.size} commands`);
