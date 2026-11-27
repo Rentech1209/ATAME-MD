@@ -1,6 +1,7 @@
 # ATAME MD
 
-WhatsApp bot with Telegram pairing. The web UI is disabled for now.
+WhatsApp bot with Telegram pairing. The web UI is disabled for now. The official channel is:
+https://whatsapp.com/channel/0029VbCygs9DJ6Gt9MFD1Z0t
 
 ## Run
 
@@ -10,13 +11,11 @@ npm install
 npm start
 ```
 
-Set `TELEGRAM_BOT_TOKEN` to enable Telegram.
+Set `TELEGRAM_BOT_TOKEN` privately in `.env` or in the hosting provider secrets. Never commit it.
 
 ## Telegram commands
 
-- `/start` or `/menu`: sends `assets/menu/menu.jpg` with the menu.
+- `/start` or `/menu`: sends `assets/menu/menu.jpg` with the ATAME MD menu.
 - `/pair 224623752938`: generates a WhatsApp pairing code directly in Telegram.
 - `/connect 224623752938`: alias for `/pair`.
-- `/ping`: checks that the bot is online.
-
-Use the WhatsApp pairing code in WhatsApp → Appareils liés → Lier un appareil → Lier avec un numéro de téléphone.
+- `/ping`: checks that ATAME MD is online.

@@ -104,6 +104,7 @@ let PREFIX = process.env.PREFIX || ".";
 const BOT_NAME = process.env.BOT_NAME || "ATAME MD";
 const OWNER_NAME = process.env.OWNER_NAME || "RENTECH12";
 const OWNER_NUMBER = process.env.OWNER_NUMBER || "14432452503";
+const TELEGRAM_OWNER_ID = process.env.TELEGRAM_OWNER_ID || "5725625722";
 const WEB_URL = process.env.WEB_URL || `http://localhost:${port}`;
 
 const MENU_IMAGE_URL = process.env.MENU_IMAGE_URL || "https://files.catbox.moe/0dfeid.jpg";
@@ -1186,7 +1187,7 @@ let telegramBridge;
 server.listen(port, async () => {
     console.log(`🚀 ${BOT_NAME} server running on http://localhost:${port}`);
     console.log(`📱 WhatsApp bot initialized`);
-    telegramBridge = startTelegramBot({ botName: BOT_NAME, ownerName: OWNER_NAME, ownerNumber: OWNER_NUMBER, webUrl: WEB_URL, pairApiUrl: `http://127.0.0.1:${port}/api/pair`, menuImagePath: MENU_IMAGE_PATH });
+    telegramBridge = startTelegramBot({ botName: BOT_NAME, ownerName: OWNER_NAME, ownerNumber: OWNER_NUMBER, telegramOwnerId: TELEGRAM_OWNER_ID, webUrl: WEB_URL, pairApiUrl: `http://127.0.0.1:${port}/api/pair`, menuImagePath: MENU_IMAGE_PATH });
     console.log(`🔧 Loaded ${commands.size} commands`);
     console.log(`📊 Starting with ${totalUsers} total users (persistent)`);
     
