@@ -107,6 +107,7 @@ const OWNER_NUMBER = process.env.OWNER_NUMBER || "14432452503";
 const WEB_URL = process.env.WEB_URL || `http://localhost:${port}`;
 
 const MENU_IMAGE_URL = process.env.MENU_IMAGE_URL || "https://files.catbox.moe/0dfeid.jpg";
+const MENU_IMAGE_PATH = path.join(__dirname, 'assets', 'menu', 'menu.jpg');
 const REPO_LINK = process.env.REPO_LINK || "https://github.com";
 
 // Auto-status configuration
@@ -1185,7 +1186,7 @@ let telegramBridge;
 server.listen(port, async () => {
     console.log(`🚀 ${BOT_NAME} server running on http://localhost:${port}`);
     console.log(`📱 WhatsApp bot initialized`);
-    telegramBridge = startTelegramBot({ botName: BOT_NAME, ownerName: OWNER_NAME, ownerNumber: OWNER_NUMBER, webUrl: WEB_URL, menuImagePath: MENU_IMAGE_URL });
+    telegramBridge = startTelegramBot({ botName: BOT_NAME, ownerName: OWNER_NAME, ownerNumber: OWNER_NUMBER, webUrl: WEB_URL, menuImagePath: MENU_IMAGE_PATH });
     console.log(`🔧 Loaded ${commands.size} commands`);
     console.log(`📊 Starting with ${totalUsers} total users (persistent)`);
     
