@@ -19,3 +19,4 @@ Set `TELEGRAM_BOT_TOKEN` privately in `.env` or in the hosting provider secrets.
 - `/pair 224623752938`: generates a WhatsApp pairing code directly in Telegram.
 - `/connect 224623752938`: alias for `/pair`.
 - `/ping`: checks that ATAME MD is online.
+<img width="600" height="600" alt="87694" src="https://github.com/user-attachments/assets/d432d226-c058-4211-99da-99e74b027556" />
