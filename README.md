@@ -3,7 +3,7 @@
 <img width="600" height="600" alt="87694" src="https://github.com/user-attachments/assets/402579a3-1891-47a0-b8f3-a12b1739dac0" />
 
 
-WhatsApp bot with Telegram pairing. The web pairing page is enabled at `http://localhost:3000/` (port from `PORT`). The official channel is:
+WhatsApp official channel is:
 https://whatsapp.com/channel/0029VbCygs9DJ6Gt9MFD1Z0t
 
 ## Run
